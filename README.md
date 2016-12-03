@@ -11,7 +11,7 @@ In order to use the service provider you'll need to be running **PHP 5.4+**
 The best way to install the service provider is using [Composer](https://getcomposer.org):
 
 ````shell
-composer require electrolinux/silex-capsule:1.*
+composer require electrolinux/silex-capsule:2.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file: 
@@ -19,7 +19,7 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "electrolinux/silex-capsule": "1.*"
+        "electrolinux/silex-capsule": "2.*"
     }
 }
 ````
