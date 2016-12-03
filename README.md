@@ -11,7 +11,7 @@ In order to use the service provider you'll need to be running **PHP 5.4+**
 The best way to install the service provider is using [Composer](https://getcomposer.org):
 
 ````shell
-composer require ziadoz/silex-capsule:1.*
+composer require electrolinux/silex-capsule:1.*
 ````
 
 Alternatively, you can add it directly to your `composer.json` file: 
@@ -19,7 +19,7 @@ Alternatively, you can add it directly to your `composer.json` file:
 ````json
 {
     "require": {
-        "ziadoz/silex-capsule": "1.*"
+        "electrolinux/silex-capsule": "1.*"
     }
 }
 ````
@@ -32,7 +32,7 @@ To use it in your application just register the service provider with Silex:
 <?php        
 $app = new Silex\Application;
 
-$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
+$app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
     'capsule.connection' => [
         'driver'    => 'mysql',
         'host'      => 'localhost',
@@ -117,7 +117,7 @@ You can setup multiple connections and even caching with the service provider; s
 <?php
 $app = new Silex\Application;
 
-$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
+$app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
     // Connections
     'capsule.connections' => [
         'default' => [
@@ -189,7 +189,7 @@ The following is a full example of all the available options that you can pass t
 <?php
 $app = new Silex\Application;
 
-$app->register(new Ziadoz\Silex\Provider\CapsuleServiceProvider, [
+$app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
     // Multiple Connections
     'capsule.connections' => [
         'default' => [

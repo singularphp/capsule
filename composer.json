@@ -1,9 +1,9 @@
 {
-    "name": "ziadoz/silex-capsule",
-    "description": "A Laravel Eloquent ORM/Capsule service provider for Silex",
+    "name": "electrolinux/silex-capsule",
+    "description": "A Laravel Eloquent ORM/Capsule service provider for Silex 2",
     "support": {
-        "issues": "https://github.com/ziadoz/silex-capsule/issues",
-        "source": "https://github.com/ziadoz/silex-capsule"
+        "issues": "https://github.com/electrolinux/silex-capsule/issues",
+        "source": "https://github.com/electrolinux/silex-capsule"
     },
     "keywords": ["laravel", "database", "sql", "orm", "capsule", "silex", "service provider"],
     "license": "MIT",
@@ -11,6 +11,10 @@
         {
             "name": "Jamie York",
             "email": "ziadoz@gmail.com"
+        },
+	{
+            "name": "Didier Belot",
+            "email": "electrolinux@gmail.com"
         }
     ],
     "require": {
@@ -21,6 +25,6 @@
         "illuminate/events": "~5.0"
     },
     "autoload": {
-        "psr-4": { "Ziadoz\\Silex\\Provider\\": "src/" }
+        "psr-4": { "Electrolinux\\Silex\\Provider\\": "src/" }
     }
 }
