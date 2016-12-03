@@ -1,5 +1,5 @@
 <?php
-namespace Ziadoz\Silex\Provider;
+namespace Electrolinux\Silex\Provider;
 
 
 use Silex\Application;
