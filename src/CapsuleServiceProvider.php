@@ -1,5 +1,5 @@
 <?php
-namespace Electrolinux\Silex\Provider;
+namespace Singular\Capsule\Provider;
 
 
 use Silex\Application;
