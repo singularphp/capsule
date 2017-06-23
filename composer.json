@@ -4,10 +4,6 @@
     "keywords": ["laravel", "database", "sql", "orm", "capsule", "silex", "service provider"],
     "license": "MIT",
     "authors": [
-        {
-            "name": "Jamie York",
-            "email": "ziadoz@gmail.com"
-        },
     	{
             "name": "Didier Belot",
             "email": "electrolinux@gmail.com"
