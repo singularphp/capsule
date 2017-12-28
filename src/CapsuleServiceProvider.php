@@ -13,7 +13,7 @@ use Illuminate\Container\Container;
 class CapsuleServiceProvider implements ServiceProviderInterface, BootableProviderInterface
 {
     /**
-     * Register the Capsule service.
+     * Registra o serviço do Capsule.
      *
      * @param \Pimple\Container $app
      * @return void
@@ -80,7 +80,7 @@ class CapsuleServiceProvider implements ServiceProviderInterface, BootableProvid
     }
 
     /**
-     * Boot the Capsule service.
+     * Inicializa o serviço do Capsule.
      *
      * @param \Silex\Application $app
      * @return void

@@ -1,13 +1,9 @@
 {
     "name": "singular/capsule",
-    "description": "A Laravel Eloquent ORM/Capsule service provider for Silex 2",
+    "description": "Provedor de serviços do Laravel Eloquent ORM/Capsule para Silex 2",
     "keywords": ["laravel", "database", "sql", "orm", "capsule", "silex", "service provider"],
     "license": "MIT",
     "authors": [
-    	{
-            "name": "Didier Belot",
-            "email": "electrolinux@gmail.com"
-        },
         {
             "name": "Otávio Fernandes",
             "email": "otavio@netonsolucoes.com.br"
