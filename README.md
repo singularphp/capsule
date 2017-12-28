@@ -1,32 +1,32 @@
-# Silex Capsule Service Provider
+# Provedor de serviços Capsule para o Silex
 
-This is a service provider for the [Silex Micro Framework](http://silex.sensiolabs.org/) that integrates [Laravel's Eloquent ORM](http://laravel.com/docs/5.0/eloquent) via [Capsule](https://github.com/illuminate/database), its standalone wrapper implementation.
+Este provedor é um provedor de serviços para o [Micro-framework Silex](http://silex.sensiolabs.org/) que integra [Laravel's Eloquent ORM](http://laravel.com/docs/5.0/eloquent) via [Capsule](https://github.com/illuminate/database), é uma implementação de um wrapper.
 
-## Requirements
+## Requisitos
 
-In order to use the service provider you'll need to be running **PHP 5.4+**
+Para utilizar o provedor de serviços você precisa utilizar o **PHP 5.4+**
 
-## Installation
+## Instalação
 
-The best way to install the service provider is using [Composer](https://getcomposer.org):
+Para instalar o provedor de serviços utilize o [Composer](https://getcomposer.org):
 
 ````shell
 composer require electrolinux/silex-capsule:2.*
 ````
 
-Alternatively, you can add it directly to your `composer.json` file: 
+Alternativamente, você pode adicioná-lo diretamente no arquivo `composer.json`: 
 
 ````json
 {
     "require": {
-        "electrolinux/silex-capsule": "2.*"
+        "singularphp/silex-capsule": "2.*"
     }
 }
 ````
 
-## Basic Usage
+## Uso básico
 
-To use it in your application just register the service provider with Silex: 
+Para usá-lo em sua aplicação, apenas registr o provedor de serviços com o Silex: 
 
 ````php
 <?php        
@@ -47,17 +47,17 @@ $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
 ]);
 ````
 
-For more information about the available options you should refer to the [Capsule documentation](https://github.com/illuminate/database).
+Para maiores informações sobre as opções disponíveis você pode consultar a [Documentação do Capsule](https://github.com/illuminate/database).
 
-Once you've registered the service provider a Capsule object will be created and Eloquent booted up before any of your route controllers are called. If you're interested in the technical aspects, Capsule is registered as `before` middleware with Silex using `Application::EARLY_EVENT`, so it'll only ever be made available once your application is run and before anything else happens.
+Uma vez registrado o provedor de servios um objeto Capsule será criado e o Eloquent será iniciado antes de qualquer rota ser chamada. Se você está interessado em aspectos técnicos, Capsule é registrado como um middleware `before` com o Silex usando `Application::EARLY_EVENT`, assim só estará disponível quando sua aplicação  é executada e antes de qualquer coisa acontecer.
 
-If you need Capsule and Eloquent to be booted up before your application is run (`$app->run()`), for example in a Symfony Console command, you just need to access its array element within the dependency injection container: 
+Se você precisa que o Capsule e Eloquent sejam inicializados antes da sua aplicação ser iniciada (`$app->run()`), por exemplo em um comando de linha do Symfony, você precisa apenas acessar o serviço dentro do container de injeção de dependência: 
 
 ````php
 $app['capsule']; 
 ````
 
-Capsule will be made available globally by default, allowing you to write queries directly in your controllers should you wish:
+Capsule estará disponível globalmente por default, permitindo que você escreva queries diretamente em seus controladores como quiser:
 
 ````php
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -68,9 +68,9 @@ $app->get('/book/{id}', function(Application $app, $id) {
 });
 ````
 
-If you don't want Capsule to be booted then set the `capsule.global` setting to `false`. If you don't plan to use Eloquent to build models then you can also prevent it from being booted by setting `capsule.eloquent` to `false`.
+Se você não quiser que o Capsule seja inicializado então defina a configuração `capsule.global` para `false`. Se você não planejar usar o Eloquente para construir modelos então você pode evitar que ele seja inicializado definindo a configuração `capsule.eloquent` para `false`.
 
-Creating Eloquent models is identical to how you would create them in Laravel: 
+Criar modelos no Eloquent é identico à forma como eles são criados no Laravel: 
 
 ````php
 use Illuminate\Database\Eloquent\Model;
@@ -93,7 +93,7 @@ class Book extends Model
 }
 ````
 
-Then you can use it, and all of its features, in your controllers just like you would in Laravel: 
+Então você pode usá-lo, e todos os seus recursos, em seus controladores assim como você faria no Laravel: 
 
 ````php
 $app->get('/books', function(Application $app) {
@@ -109,9 +109,9 @@ $app->post('/book', function(Application $app, Request $request) {
 });
 ````
 
-## Advanced Usage
+## Uso avanado
 
-You can setup multiple connections and even caching with the service provider; simply use the `capsule.connections` option:
+Você pode configurar multiplas conexões e mesmo cachear com o provedor de serviços; simplismente usando a opção `capsule.connections`:
 
 ````php
 <?php
@@ -147,15 +147,15 @@ $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
 ]);
 ````
 
-If you've enabled query logging on your connection you can retrieve it through Capsule: 
+Se você habilitou o log de queries em sua conexão, você pode recuperá-los através do Capsule: 
 
 ````php
 Capsule::connection($name)->getQueryLog();
 ````
 
-You can toggling query logging on a per-connection basis using the `logging` option in your connection credentials.
+Você pode alternar o mecanismo de log por conexão usando a opção `logging` em suas credenciais de conexão.
 
-You can also use Eloquent's schema building tools to build migrations: 
+Você pode também usar o criador de esquema do Eloquent para construir migrations: 
 
 ````php
 $app['capsule']->schema()->create('books', function($table) {
@@ -166,7 +166,7 @@ $app['capsule']->schema()->create('books', function($table) {
 });
 ````
 
-By default the service provider installs the Laravel Events package, so you can also use model observers: 
+Por default o provedor de serviços instala o pacote Laravel Events, assim você pode também usar observadores para os modelos: 
 
 ````php
 <?php
@@ -181,17 +181,17 @@ class BookObserver
 Book:observe(new BookObserver());
 ````
 
-## Capsule Options Example
+## Exemplo de opções do Capsule
 
-The following is a full example of all the available options that you can pass to the service provider: 
+A seguir um exemplo completo de todas as opções que você pode passar para o provedor de serviços: 
 
 ````php
 <?php
 $app = new Silex\Application;
 
 $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
-    // Multiple Connections
-    'capsule.connections' => [
+    // Multiplas conexões
+    'capsule.connections' => [
         'default' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
@@ -201,8 +201,8 @@ $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
-            'logging'   => false, // Toggle query logging on this connection.
-        ],
+            'logging'   => false, // Desabilita o log para esta conexão
+        ],
 
         'other' => [
             'driver'    => 'mysql',
@@ -213,13 +213,13 @@ $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
-            'logging'   => true,  // Toggle query logging on this connection.
-        ],
+            'logging'   => true,  // Habilita o log para esta conexão
+        ],
     ],
 
     /*
-    // Single Connection
-    'capsule.connection' => [
+    // Conexão única
+    'capsule.connection' => [
         'driver'    => 'mysql',
         'host'      => 'localhost',
         'database'  => 'dbname',
@@ -228,20 +228,20 @@ $app->register(new Electrolinux\Silex\Provider\CapsuleServiceProvider, [
         'charset'   => 'utf8',
         'collation' => 'utf8_unicode_ci',
         'prefix'    => '',
-        'logging'   => true, // Toggle query logging on this connection.
+        'logging'   => true, // Habilita o log para esta conexão
     ],
     */
 
     /*
-    // Other Options
-    'capsule.global'   => true, // Enable global access to Capsule query builder.
-    'capsule.eloquent' => true, // Automatically boot Eloquent ORM.
+    // Outras opções
+    'capsule.global'   => true, // Habilita o acesso global ao query builder do Capsule.
+    'capsule.eloquent' => true, // Automaticamente inicializa o Eloquent ORM.
     */
 ]);
 ````
 
-## Testing
+## Testes
 
-There are some basic tests to ensure that the Capsule object is correctly registered with Silex. You can run them using [PHPUnit](https://phpunit.de/), and you'll also need SQLite as the tests use a simple in-memory database. 
+Há alguns testes básicos para certificar que o objeto Capsule está corretamente registrado com o Silex. Você pode executá-los usando [PHPUnit](https://phpunit.de/), e você irá tambm precisar do SQLite para fazer testes de banco de dados em memória. 
 
-If you make a pull request please ensure you add the accompanying tests.
+Se você fizer um pull request certifique-se de que adicionou os testes que o acopanham.
