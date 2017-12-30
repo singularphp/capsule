@@ -109,7 +109,7 @@ $app->post('/book', function(Application $app, Request $request) {
 });
 ````
 
-## Uso avanado
+## Uso avançado
 
 Você pode configurar multiplas conexões e mesmo cachear com o provedor de serviços; simplismente usando a opção `capsule.connections`:
 
